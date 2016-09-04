@@ -4,6 +4,8 @@ using RotorLib.Tools;
 
 namespace RotorLib.Access {
     public interface IClient {
+        void WriteLog(string format, params object[] args);
+
         void SendPacket(byte[] packet);
 
         void SendPacket(PacketWriter packet);

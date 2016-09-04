@@ -40,6 +40,10 @@ namespace RotorLib {
         protected abstract void Execute(CancellationToken token);
 
         #region Basic Functionality
+        public void Log(string format, params object[] args) {
+            client.WriteLog(format, args);
+        }
+
         protected void SendPacket(byte[] packet) {
             client.SendPacket(packet);
         }
