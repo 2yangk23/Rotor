@@ -1,4 +1,4 @@
-﻿namespace Rotor.Access {
+﻿namespace RotorLib.Access {
      public interface IMapler {
         int Id { get; }
         string Name { get; }

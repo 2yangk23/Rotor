@@ -1,6 +1,6 @@
 ﻿using System.Threading;
 
-namespace Rotor.Tools {
+namespace RotorLib.Tools {
     public class Blocking<T> {
         private readonly AutoResetEvent waiter;
         private T value;

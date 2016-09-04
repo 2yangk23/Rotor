@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 using MaplePacketLib.Tools;
-using Rotor.Access;
-using Rotor.Tools;
+using RotorLib.Access;
+using RotorLib.Tools;
 
-namespace Rotor {
+namespace RotorLib {
     public abstract class Rotor {
         private readonly IClient client;
         private readonly List<ushort> headers = new List<ushort>();
@@ -17,8 +17,9 @@ namespace Rotor {
             this.client = client;
         }
 
-        protected void Start() {
+        public void Start() {
             try {
+                Console.WriteLine($"Starting {GetType().Name}");
                 Init();
                 Task.Run(() => Execute(source.Token), source.Token);
             } catch (InvalidOperationException ex) {
@@ -28,7 +29,7 @@ namespace Rotor {
             }
         }
 
-        protected void Stop() {
+        public void Stop() {
             source?.Cancel();
             headers.ForEach(d => client.UnregisterRecv(d));
             headers.Clear();

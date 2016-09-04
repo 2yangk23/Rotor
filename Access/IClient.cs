@@ -1,8 +1,8 @@
 ﻿using System;
 using MaplePacketLib.Tools;
-using Rotor.Tools;
+using RotorLib.Tools;
 
-namespace Rotor.Access {
+namespace RotorLib.Access {
     public interface IClient {
         void SendPacket(byte[] packet);
 

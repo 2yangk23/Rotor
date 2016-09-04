@@ -7,8 +7,8 @@
     <ProjectGuid>{EFEC2FA9-2764-4819-B335-5A7AEC9D531A}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Rotor</RootNamespace>
-    <AssemblyName>Rotor</AssemblyName>
+    <RootNamespace>RotorLib</RootNamespace>
+    <AssemblyName>RotorLib</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
