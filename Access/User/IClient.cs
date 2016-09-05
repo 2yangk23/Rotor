@@ -2,7 +2,7 @@
 using MaplePacketLib.Tools;
 using RotorLib.Tools;
 
-namespace RotorLib.Access {
+namespace RotorLib.Access.User {
     public enum ClientState : byte {
         DISCONNECTED,
         LOGIN,

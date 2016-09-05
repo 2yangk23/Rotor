@@ -34,8 +34,6 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Access\IClient.cs" />
-    <Compile Include="Access\IMapler.cs" />
     <Compile Include="Access\Inventory\IEquip.cs" />
     <Compile Include="Access\Inventory\IInventory.cs" />
     <Compile Include="Access\Inventory\IItem.cs" />
@@ -45,6 +43,9 @@
     <Compile Include="Access\Map\IMapObject.cs" />
     <Compile Include="Access\Map\IPlayer.cs" />
     <Compile Include="Access\Primitive\IPosition.cs" />
+    <Compile Include="Access\User\IClient.cs" />
+    <Compile Include="Access\User\IInfo.cs" />
+    <Compile Include="Access\User\IMapler.cs" />
     <Compile Include="Rotor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Tools\Blocking.cs" />

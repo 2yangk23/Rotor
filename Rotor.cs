@@ -4,6 +4,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using MaplePacketLib.Tools;
 using RotorLib.Access;
+using RotorLib.Access.User;
 using RotorLib.Tools;
 
 namespace RotorLib {
