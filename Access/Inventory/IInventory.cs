@@ -11,10 +11,10 @@ namespace RotorLib.Access.Inventory {
 
     public interface IInventory {
         long Mesos { get; }
-        Dictionary<short, IEquip> EquipInventory { get; }
-        Dictionary<short, IOther> UseInventory { get; }
-        Dictionary<short, IOther> SetupInventory { get; }
-        Dictionary<short, IOther> EtcInventory { get; }
-        Dictionary<short, IOther> CashInventory { get; }
+        IReadOnlyDictionary<short, IEquip> EquipInventory { get; }
+        IReadOnlyDictionary<short, IOther> UseInventory { get; }
+        IReadOnlyDictionary<short, IOther> SetupInventory { get; }
+        IReadOnlyDictionary<short, IOther> EtcInventory { get; }
+        IReadOnlyDictionary<short, IOther> CashInventory { get; }
     }
 }

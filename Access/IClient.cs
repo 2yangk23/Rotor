@@ -3,6 +3,13 @@ using MaplePacketLib.Tools;
 using RotorLib.Tools;
 
 namespace RotorLib.Access {
+    public enum ClientState : byte {
+        DISCONNECTED,
+        LOGIN,
+        CASHSHOP,
+        GAME
+    }
+
     public interface IClient {
         void WriteLog(string format, params object[] args);
 
