@@ -37,16 +37,18 @@ namespace RotorLib {
          * - If looping, condition on token
          * - If not needed, don't implement
          */
-        protected void Execute(CancellationToken token) {
-            WaitRecv(0xFFFF);
-        }
+        protected void Execute(CancellationToken token) { }
 
         #region Start/Stop Methods
         public void Start() {
             try {
                 Console.WriteLine($"Starting {GetType().Name}");
                 Init();
-                Task.Run(() => Execute(source.Token), source.Token);
+                // Only run Execute if overriden
+                var methodInfo = typeof(Rotor).GetMethod("Execute");
+                if (methodInfo.GetBaseDefinition().DeclaringType != methodInfo.DeclaringType) {
+                    Task.Run(() => Execute(source.Token), source.Token);
+                }
             } catch (InvalidOperationException ex) {
                 Stop();
                 Console.WriteLine($"Error running {GetType().Name}.  Terminated.");
