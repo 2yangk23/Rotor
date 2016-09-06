@@ -1,7 +1,7 @@
 ﻿namespace RotorLib.Access.Map {
     public interface IPlayer : IMapObject {
-        string Ign { get; }
-        short Fh { get; }
+        string Name { get; }
+        short Foothold { get; }
         bool HasPermit { get; }
     }
 }

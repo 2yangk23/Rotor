@@ -42,6 +42,7 @@
     <Compile Include="Access\Map\IMap.cs" />
     <Compile Include="Access\Map\IMapObject.cs" />
     <Compile Include="Access\Map\IPlayer.cs" />
+    <Compile Include="Access\Map\IShop.cs" />
     <Compile Include="Access\Primitive\IPosition.cs" />
     <Compile Include="Access\User\IClient.cs" />
     <Compile Include="Access\User\IInfo.cs" />

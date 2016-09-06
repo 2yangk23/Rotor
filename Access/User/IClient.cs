@@ -1,5 +1,7 @@
 ﻿using System;
 using MaplePacketLib.Tools;
+using RotorLib.Access.Inventory;
+using RotorLib.Access.Map;
 using RotorLib.Tools;
 
 namespace RotorLib.Access.User {
@@ -11,6 +13,14 @@ namespace RotorLib.Access.User {
     }
 
     public interface IClient {
+        IInventory GetInventory { get; }
+
+        IMap GetMap { get; }
+
+        IMapler GetMapler { get; }
+
+        IInfo GetInfo { get; }
+
         void WriteLog(string format, params object[] args);
 
         void SendPacket(byte[] packet);

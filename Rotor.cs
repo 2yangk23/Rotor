@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 using MaplePacketLib.Tools;
-using RotorLib.Access;
+using RotorLib.Access.Inventory;
+using RotorLib.Access.Map;
 using RotorLib.Access.User;
 using RotorLib.Tools;
 
@@ -14,10 +15,33 @@ namespace RotorLib {
         private readonly Blocking<PacketReader> reader = new Blocking<PacketReader>();
         private readonly CancellationTokenSource source = new CancellationTokenSource();
 
+        /* Access Data */
+        protected IInventory Inventory => client.GetInventory;
+        protected IMap Map => client.GetMap;
+        protected IMapler Mapler => client.GetMapler;
+        protected IInfo Info => client.GetInfo;
+
         protected Rotor(IClient client) {
             this.client = client;
         }
 
+        /* Initialize Rotor
+         * - Register RECV headers
+         * - Runtime initialization
+         * - If not needed, don't implement
+         */
+        protected void Init() { }
+
+        /* Execute Rotor
+         * - Main running script
+         * - If looping, condition on token
+         * - If not needed, don't implement
+         */
+        protected void Execute(CancellationToken token) {
+            WaitRecv(0xFFFF);
+        }
+
+        #region Start/Stop Methods
         public void Start() {
             try {
                 Console.WriteLine($"Starting {GetType().Name}");
@@ -35,10 +59,7 @@ namespace RotorLib {
             headers.ForEach(d => client.UnregisterRecv(d));
             headers.Clear();
         }
-
-        protected abstract void Init();
-
-        protected abstract void Execute(CancellationToken token);
+        #endregion
 
         #region Basic Functionality
         public void Log(string format, params object[] args) {
