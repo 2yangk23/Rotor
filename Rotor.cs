@@ -90,5 +90,27 @@ namespace RotorLib {
             return client.WaitRecv(header, reader, returnPacket);
         }
         #endregion
+
+        #region Utility
+        protected void MoveMap(int mapId) {
+            client.MoveMap(mapId);
+        }
+
+        protected void WaitMap(int mapId) {
+            SpinWait.SpinUntil(() => Mapler.Map == mapId);
+        }
+
+        protected void EnterPortal(string name, short x, short y) {
+            client.EnterPortal(name, x, y);
+        }
+
+        protected void EnterPortalSpecial(string name, short x, short y) {
+            client.EnterPortalSpecial(name, x, y);
+        }
+
+        protected void ChangeChannel(byte channel) {
+            client.ChangeChannel(channel);
+        }
+        #endregion
     }
 }

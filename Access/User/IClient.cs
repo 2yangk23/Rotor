@@ -2,6 +2,7 @@
 using MaplePacketLib.Tools;
 using RotorLib.Access.Inventory;
 using RotorLib.Access.Map;
+using RotorLib.Access.Primitive;
 using RotorLib.Tools;
 
 namespace RotorLib.Access.User {
@@ -32,5 +33,13 @@ namespace RotorLib.Access.User {
         void UnregisterRecv(ushort header);
 
         PacketReader WaitRecv(ushort header, Blocking<PacketReader> reader, bool returnPacket = false);
+
+        void MoveMap(int mapId);
+
+        void EnterPortal(string name, short x, short y);
+
+        void EnterPortalSpecial(string name, short x, short y);
+
+        void ChangeChannel(byte channel);
     }
 }
