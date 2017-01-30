@@ -5,5 +5,6 @@ namespace RotorLib.Access.Map {
         IReadOnlyDictionary<int, IPlayer> Players { get; }
         IReadOnlyDictionary<int, IDrop> Drops { get; }
         IReadOnlyDictionary<int, IShop> Shops { get; }
+        IReadOnlyDictionary<int, IMob> Mobs { get; }
     }
 }

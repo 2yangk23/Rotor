@@ -2,8 +2,6 @@
 using MaplePacketLib.Tools;
 using RotorLib.Access.Inventory;
 using RotorLib.Access.Map;
-using RotorLib.Access.Primitive;
-using RotorLib.Tools;
 
 namespace RotorLib.Access.User {
     public enum ClientState : byte {
@@ -32,7 +30,7 @@ namespace RotorLib.Access.User {
 
         void UnregisterRecv(ushort header);
 
-        PacketReader WaitRecv(ushort header, Blocking<PacketReader> reader, bool returnPacket = false);
+        bool WaitRecv(ushort header, out PacketReader reader, int timeout = -1, bool returnPacket = false);
 
         void MoveMap(int mapId);
 

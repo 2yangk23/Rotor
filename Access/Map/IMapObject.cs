@@ -3,6 +3,6 @@
 namespace RotorLib.Access.Map {
     public interface IMapObject {
         int Id { get; }
-        IPosition Position { get; }
+        Position Position { get; }
     }
 }

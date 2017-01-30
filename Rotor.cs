@@ -1,18 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Reflection;
 using System.Threading;
 using System.Threading.Tasks;
 using MaplePacketLib.Tools;
 using RotorLib.Access.Inventory;
 using RotorLib.Access.Map;
 using RotorLib.Access.User;
-using RotorLib.Tools;
 
 namespace RotorLib {
     public abstract class Rotor {
         private readonly IClient client;
         private readonly List<ushort> headers = new List<ushort>();
-        private readonly Blocking<PacketReader> reader = new Blocking<PacketReader>();
         private readonly CancellationTokenSource source = new CancellationTokenSource();
 
         /* Access Data */
@@ -30,14 +29,17 @@ namespace RotorLib {
          * - Runtime initialization
          * - If not needed, don't implement
          */
-        protected void Init() { }
+
+        protected virtual void Init() {
+            Console.WriteLine("Nothing to Initialize.");
+        }
 
         /* Execute Rotor
          * - Main running script
          * - If looping, condition on token
          * - If not needed, don't implement
          */
-        protected void Execute(CancellationToken token) { }
+        protected virtual void Execute(CancellationToken token) { }
 
         #region Start/Stop Methods
         public void Start() {
@@ -45,9 +47,12 @@ namespace RotorLib {
                 Console.WriteLine($"Starting {GetType().Name}");
                 Init();
                 // Only run Execute if overriden
-                var methodInfo = typeof(Rotor).GetMethod("Execute");
+                var methodInfo = GetType().GetMethod("Execute", BindingFlags.Instance | BindingFlags.NonPublic, 
+                    null, new[] { typeof(CancellationToken) }, null);
                 if (methodInfo.GetBaseDefinition().DeclaringType != methodInfo.DeclaringType) {
                     Task.Run(() => Execute(source.Token), source.Token);
+                } else {
+                    Console.WriteLine("Nothing to Execute.");
                 }
             } catch (InvalidOperationException ex) {
                 Stop();
@@ -86,8 +91,13 @@ namespace RotorLib {
             client.UnregisterRecv(header);
         }
 
-        protected PacketReader WaitRecv(ushort header, bool returnPacket = false) {
-            return client.WaitRecv(header, reader, returnPacket);
+        protected bool WaitRecv(ushort header, int timeout = -1) {
+            PacketReader trash;
+            return client.WaitRecv(header, out trash, timeout);
+        }
+
+        protected bool WaitRecv(ushort header, out PacketReader reader, int timeout = -1) {
+            return client.WaitRecv(header, out reader, timeout, true);
         }
         #endregion
 

@@ -41,15 +41,15 @@
     <Compile Include="Access\Map\IDrop.cs" />
     <Compile Include="Access\Map\IMap.cs" />
     <Compile Include="Access\Map\IMapObject.cs" />
+    <Compile Include="Access\Map\IMob.cs" />
     <Compile Include="Access\Map\IPlayer.cs" />
     <Compile Include="Access\Map\IShop.cs" />
-    <Compile Include="Access\Primitive\IPosition.cs" />
+    <Compile Include="Access\Primitive\Position.cs" />
     <Compile Include="Access\User\IClient.cs" />
     <Compile Include="Access\User\IInfo.cs" />
     <Compile Include="Access\User\IMapler.cs" />
     <Compile Include="Rotor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Tools\Blocking.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MaplePacketLib\MaplePacketLib.csproj">
